@@ -1,0 +1,51 @@
+.word-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 15px;
+    border-bottom: 5px solid var(--secondary);
+    padding: 20px 50px 15px;
+}
+
+.word-list-header button {
+    width: 20%;
+}
+
+.adding-box {
+    margin: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.adding-box input {
+    height: 40px;
+    width: 35%;
+    padding: 0 10px;
+    border-radius: 30px;
+    border: 1px solid var(--secondary);
+}
+
+.adding-box button {
+    font-size: 15px;
+    padding: 10px 0;
+    width: 35px;
+    /* height: 30px; */
+}
+
+.list {
+    padding: 15px;
+}
+
+.list li {
+    display: flex;
+    justify-content: space-between;
+}
+
+.list button {
+    font-size: 12px;
+    width: 30px;
+    height: 30px;
+    padding: 0px;
+    margin: 5px 0;
+}
