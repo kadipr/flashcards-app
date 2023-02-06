@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import "../css/word-list.css";
+import List from "./List";
 
 const WordList = (props) => {
     return (
@@ -15,20 +16,8 @@ const WordList = (props) => {
                     <button onClick={props.add}>dodaj fiszkę</button>
                 </div>
 
-                <ul className="list">
-                    {props.list.map(e => {
-                        return (
-                            <li key={e.id}>
-                                <span className="bold">{e.word} </span>
-                                <span className="bold">{e.definition} </span>
-                                <span>{e.learnOrRevise === 0 ? "do nauki" : 
-                                // podac za ile dni nastepna powtórka
-                                e.learnOrRevise === 7 ? "nauczone" : `powtórka za ${e.revisionDate}`}</span>
-                                <button onClick={() => props.delBtn(e.id)}>x</button>
-                            </li>
-                        )
-                    })}
-                </ul>
+                <List l={props.list} deleteBtn={props.delBtn} />
+                
 
             </header>
             <NavLink to="/"><button className="return-btn">Wróć do strony głównej</button></NavLink>
