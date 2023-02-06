@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "./components/MainPage";
 import WordList from "./components/WordList";
@@ -7,8 +7,12 @@ import Revision from "./components/Revision";
 import "./app.css";
 
 function App() {
-  // zapisać w localStorage
-  const [words, setWords] = useState([]);
+  const [words, setWords] = useState(JSON.parse(localStorage.getItem('words')) || []);
+
+  useEffect(() => {
+    console.log(1)
+    localStorage.setItem('words', JSON.stringify(words));
+  }, [words]);
 
   const revisions = {
     1: 1,
