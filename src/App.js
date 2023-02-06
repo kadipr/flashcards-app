@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "./components/MainPage";
 import WordList from "./components/WordList";
@@ -10,6 +10,26 @@ function App() {
   // zapisać w localStorage
   const [words, setWords] = useState([]);
 
+  const revisions = {
+    1: 1,
+    2: 3,
+    3: 7,
+    4: 14,
+    5: 30,
+    6: 90,
+     7: 0
+  }
+
+
+  // const revisions = {
+  //   1: 0,
+  //   2: 0,
+  //   3: 0,
+  //   4: 0,
+  //   5: 0,
+  //   6: 0
+  // }
+
   const addWords = (e) => {
     const [w, d] = e.target.parentNode.children;
 
@@ -18,13 +38,12 @@ function App() {
       return;
     }
 
-    // dodać nowa właściwość, która będzie odpowiadać za to czy dane słowo
-    // jest do nauki/ do powtorki za 1/ 3 dni/itd/ nauczone
     const newObj = {
       id: new Date().getTime(), 
       word: w.value, 
       definition: d.value,
-      learnOrRevise: 0
+      learnOrRevise: 0,
+      revisionDate: null
     }
     setWords(prev => [...prev, newObj])
     w.value = "";
@@ -47,8 +66,8 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/wordlist" element={<WordList add={addWords} delBtn={delFlashcard} list={words} />} />
-        <Route path="/study" element={<Study list={words} setList={setWords} />} />
-        <Route path="/Revision" element={<Revision list={words} />} />
+        <Route path="/study" element={<Study list={words} setList={setWords} rev={revisions} />} />
+        <Route path="/Revision" element={<Revision list={words} setList={setWords} rev={revisions} />} />
       </Routes>
     </BrowserRouter>
     

@@ -28,8 +28,8 @@
 
 .adding-box button {
     font-size: 15px;
-    padding: 10px 0;
-    width: 35px;
+    padding: 10px 15px;
+    width: auto;
     /* height: 30px; */
 }
 
@@ -39,7 +39,13 @@
 
 .list li {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    align-items: center;
+}
+
+.list li span {
+    flex-basis: 35%;
+
 }
 
 .list button {

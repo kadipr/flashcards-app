@@ -1,12 +1,73 @@
 import { NavLink } from "react-router-dom";
 
-const Revision = () => {
+const Revision = (props) => {
+    const newArr = props.list.filter(e => {
+        if (new Date().getTime() >= new Date(e.revisionDate).getTime() &&
+            e.learnOrRevise >= 1 && e.learnOrRevise < 7) {
+            return e;
+        }
+    })
+
+    console.log(newArr);
+
+    console.log(1);
+
+    let id = Math.floor(Math.random() * newArr.length);
+
+    let newFunc = (isFlashcardKnown, idx) => {
+
+        if (isFlashcardKnown) {
+            props.setList(props.list.map(flashcard => {
+
+                if (flashcard.id !== idx) {
+                    return flashcard;
+                } else {
+                    const newInterval = props.rev[flashcard.learnOrRevise + 1]
+                    const revDay = new Date();
+                    revDay.setDate(new Date().getDate() + newInterval);
+
+                    return {
+                        ...flashcard, 
+                        learnOrRevise: flashcard.learnOrRevise + 1,
+                        revisionDate: revDay
+                    };
+                }
+            }));
+            console.log(props.list)
+        } else {
+            props.setList(props.list);
+        }
+    }
+
+    const FlashcardDiv = () => {
+        return (
+            <div className="flashcard-div">
+                <div className="flashcard-div-paragraphs">
+                    <p className="word-flashcard"><span>słowo / wyrażenie: </span>{newArr[id].word}</p>
+                    <p className="definition-flashcard"><span>znaczenie: </span>{newArr[id].definition}</p>
+                </div>
+                <div className="flashcard-div-buttons">
+                    <button onClick={() => newFunc(false, newArr[id].id)}>nie umiem</button>
+                    <button onClick={() => newFunc(true, newArr[id].id)}>umiem</button>
+                </div>
+            </div>
+        )
+    }
 
     return (
-        <div>Revision
+        <div>
+            {newArr.length > 0 ? <FlashcardDiv /> : 
+            <div className="flashcard-div empty-list"><h3>
+                nie ma już żadnych słów do nauczenia. dodaj słowa do listy, aby dalej się uczyć
+            </h3></div>}
             <NavLink to="/"><button className="return-btn">Wróć do strony głównej</button></NavLink>
         </div>
     )
+    // return (
+    //     <div>Revision
+    //         <NavLink to="/"><button className="return-btn">Wróć do strony głównej</button></NavLink>
+    //     </div>
+    // )
 }
 
 export default Revision;

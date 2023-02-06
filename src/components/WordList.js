@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
-import { useEffect } from "react";
 import "../css/word-list.css";
 
 const WordList = (props) => {
+
 
     return (
         <div className="word-list-wrapper">
@@ -23,10 +23,12 @@ const WordList = (props) => {
                         return (
                             <li key={e.id}>
                                 {/* poprawić flex elementów */}
-                                <span>{e.word} </span><span>{e.definition} </span>
+                                <span className="bold">{e.word} </span>
+                                <span className="bold">{e.definition} </span>
                                 {/* poprawic liczby w ponizszej linijce */}
                                 <span>{e.learnOrRevise === 0 ? "do nauki" : 
-                                e.learnOrRevise === 5 ? "nauczone" : `powtórka za ${e.id}`}</span>
+                                // podac za ile dni nastepna powtórka
+                                e.learnOrRevise === 6 ? "nauczone" : `powtórka za ${e.revisionDate}`}</span>
                                 <button onClick={() => props.delBtn(e.id)}>x</button>
                             </li>
                         )
