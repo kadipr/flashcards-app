@@ -2,7 +2,7 @@ import "../css/word-list.css";
 
 const List = (props) => {
     const difference = (date) => {
-        const diffInMilliseconds = date.getTime() - new Date().getTime();
+        const diffInMilliseconds = new Date(date).getTime() - new Date().getTime();
 
         const dayInMs = 1000 * 60 * 60 * 24;
         const hoursInMs = 1000 * 60 * 60;
