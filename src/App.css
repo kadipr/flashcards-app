@@ -44,11 +44,8 @@ ul li {
     list-style-type: none;
 }
 
-
-/* poprawic position przycisku */
-
 .return-btn {
-    position: absolute;
+    position: fixed;
     width: auto;
     padding: 10px 15px;
     bottom: 30px;

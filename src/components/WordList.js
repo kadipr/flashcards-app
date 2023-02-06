@@ -12,7 +12,6 @@ const WordList = (props) => {
                 <div className="adding-box">
                     <input placeholder="słowo" />
                     <input placeholder="definicja" />
-                    {/* css przycisku */}
                     <button onClick={props.add}>dodaj fiszkę</button>
                 </div>
 
@@ -20,13 +19,11 @@ const WordList = (props) => {
                     {props.list.map(e => {
                         return (
                             <li key={e.id}>
-                                {/* poprawić flex elementów */}
                                 <span className="bold">{e.word} </span>
                                 <span className="bold">{e.definition} </span>
-                                {/* poprawic liczby w ponizszej linijce */}
                                 <span>{e.learnOrRevise === 0 ? "do nauki" : 
                                 // podac za ile dni nastepna powtórka
-                                e.learnOrRevise === 6 ? "nauczone" : `powtórka za ${e.revisionDate}`}</span>
+                                e.learnOrRevise === 7 ? "nauczone" : `powtórka za ${e.revisionDate}`}</span>
                                 <button onClick={() => props.delBtn(e.id)}>x</button>
                             </li>
                         )
