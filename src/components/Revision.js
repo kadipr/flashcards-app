@@ -8,21 +8,15 @@ const Revision = (props) => {
         }
     })
 
-    console.log(newArr);
-
-    console.log(1);
-
     let id = Math.floor(Math.random() * newArr.length);
 
     let newFunc = (isFlashcardKnown, idx) => {
-
         if (isFlashcardKnown) {
             props.setList(props.list.map(flashcard => {
-
                 if (flashcard.id !== idx) {
                     return flashcard;
                 } else {
-                    const newInterval = props.rev[flashcard.learnOrRevise + 1]
+                    const newInterval = props.rev[flashcard.learnOrRevise + 1];
                     const revDay = new Date();
                     revDay.setDate(new Date().getDate() + newInterval);
 
@@ -33,12 +27,12 @@ const Revision = (props) => {
                     };
                 }
             }));
-            console.log(props.list)
         } else {
             props.setList(props.list);
         }
     }
 
+    // stworzyć komponent flashcard
     const FlashcardDiv = () => {
         return (
             <div className="flashcard-div">
@@ -63,11 +57,6 @@ const Revision = (props) => {
             <NavLink to="/"><button className="return-btn">Wróć do strony głównej</button></NavLink>
         </div>
     )
-    // return (
-    //     <div>Revision
-    //         <NavLink to="/"><button className="return-btn">Wróć do strony głównej</button></NavLink>
-    //     </div>
-    // )
 }
 
 export default Revision;

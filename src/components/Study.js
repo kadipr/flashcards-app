@@ -10,10 +10,7 @@ const Study = (props) => {
     
     // newfunc do napisania w innym komponencie (w wersji dla revision zmienna istorevise)
     // zmienić nazwę tej funkcji
-    console.log(new Date().getTime());
-   
     let newFunc = (isFlashcardKnown, idx) => {
-        
         if (isFlashcardKnown) {
             props.setList(props.list.map(flashcard => {
                 if (flashcard.id !== idx) {
@@ -22,7 +19,7 @@ const Study = (props) => {
                     const newInterval = props.rev[flashcard.learnOrRevise + 1]
                     const revDay = new Date();
                     revDay.setDate(new Date().getDate() + newInterval);
-                    
+
                     return {
                         ...flashcard, 
                         learnOrRevise: flashcard.learnOrRevise + 1,

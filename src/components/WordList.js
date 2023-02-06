@@ -2,8 +2,6 @@ import { NavLink } from "react-router-dom";
 import "../css/word-list.css";
 
 const WordList = (props) => {
-
-
     return (
         <div className="word-list-wrapper">
             <header>
