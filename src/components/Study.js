@@ -11,7 +11,7 @@ const Study = (props) => {
 
     return (
         <div>
-            {newArr.length > 0 ? <FlashcardDiv arr={newArr} idx={id} /> : 
+            {newArr.length > 0 ? <FlashcardDiv arr={newArr} idx={id}list={props.list} setList={props.setList} rev={props.rev} /> : 
             <div className="flashcard-div empty-list"><h3>
                 nie ma już żadnych słów do nauczenia. dodaj słowa do listy, aby dalej się uczyć
             </h3></div>}

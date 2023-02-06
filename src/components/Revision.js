@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import FlashcardDiv from "./Flashcard";
+// import UpdateFlashcard from "./UpdateFlashcard";
 
 const Revision = (props) => {
     const newArr = props.list.filter(e => {
@@ -13,7 +14,7 @@ const Revision = (props) => {
 
     return (
         <div>
-            {newArr.length > 0 ? <FlashcardDiv arr={newArr} idx={id} /> : 
+            {newArr.length > 0 ? <FlashcardDiv arr={newArr} list={props.list} setList={props.setList} rev={props.rev} idx={id} /> : 
             <div className="flashcard-div empty-list"><h3>
                 nie ma już żadnych słów do nauczenia. dodaj słowa do listy, aby dalej się uczyć
             </h3></div>}
