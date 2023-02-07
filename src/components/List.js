@@ -12,8 +12,10 @@ const List = (props) => {
             return Math.floor(diffInMilliseconds / dayInMs) + " dni";
         } else if (diffInMilliseconds - hoursInMs > 0) {
             return Math.floor(diffInMilliseconds / hoursInMs) + " godzin";
-        } else {
+        } else if (diffInMilliseconds > 0) {
             return Math.floor(diffInMilliseconds / minutesInMs) + " minut";
+        } else {
+            return "0 minut";
         }
     }
 

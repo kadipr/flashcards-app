@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "../css/study.css";
 import FlashcardDiv from "./Flashcard";
@@ -7,11 +8,12 @@ const Study = (props) => {
         return e.learnOrRevise === 0;
     })
 
-    let id = Math.floor(Math.random() * newArr.length);
+    const [id, setId] = useState(Math.floor(Math.random() * newArr.length));
 
     return (
         <div>
-            {newArr.length > 0 ? <FlashcardDiv arr={newArr} idx={id}list={props.list} setList={props.setList} rev={props.rev} /> : 
+            {newArr.length > 0 ? <FlashcardDiv arr={newArr} idx={id} setIdx={setId}
+            list={props.list} setList={props.setList} rev={props.rev} /> : 
             <div className="flashcard-div empty-list"><h3>
                 nie ma już żadnych słów do nauczenia. dodaj słowa do listy, aby dalej się uczyć
             </h3></div>}

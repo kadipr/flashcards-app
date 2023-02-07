@@ -10,7 +10,6 @@ function App() {
   const [words, setWords] = useState(JSON.parse(localStorage.getItem('words')) || []);
 
   useEffect(() => {
-    console.log(1)
     localStorage.setItem('words', JSON.stringify(words));
   }, [words]);
 
@@ -23,16 +22,6 @@ function App() {
     6: 90,
      7: 0
   }
-
-
-  // const revisions = {
-  //   1: 0,
-  //   2: 0,
-  //   3: 0,
-  //   4: 0,
-  //   5: 0,
-  //   6: 0
-  // }
 
   const addWords = (e) => {
     const [w, d] = e.target.parentNode.children;

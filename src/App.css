@@ -9,6 +9,8 @@
     box-sizing: border-box;
 }
 
+
+
 :root {
     --bgc: #6A5A63;
     --primary: #F87F83;
@@ -32,6 +34,13 @@ button {
     font-weight: bold;
     color: var(--bgc);
     font-size: 19px;
+}
+
+@media only screen and (max-width: 950px) {
+    button {
+        font-size: 16px;
+        padding: 15px 0;
+    }
 }
 
 button:hover {

@@ -1,5 +1,6 @@
 const FlashcardDiv = (props) => {
-    let updateFlashcard = (isFlashcardKnown, idx) => {
+
+    const updateFlashcard = (isFlashcardKnown, idx, setIdx) => {
         if (isFlashcardKnown) {
             props.setList(props.list.map(flashcard => {
                 if (flashcard.id !== idx) {
@@ -16,9 +17,8 @@ const FlashcardDiv = (props) => {
                     };
                 }
             }));
-            console.log(props.list)
         } else {
-            props.setList(props.list);
+            setIdx(Math.floor(Math.random() * props.arr.length));
         }
     }
 
@@ -29,8 +29,8 @@ const FlashcardDiv = (props) => {
                 <p className="definition-flashcard"><span>znaczenie: </span>{props.arr[props.idx].definition}</p>
             </div>
             <div className="flashcard-div-buttons">
-                <button onClick={() => updateFlashcard(false, props.arr[props.idx].id)}>nie umiem</button>
-                <button onClick={() => updateFlashcard(true, props.arr[props.idx].id)}>umiem</button>
+                <button onClick={() => updateFlashcard(false, props.arr[props.idx].id, props.setIdx)}>nie umiem</button>
+                <button onClick={() => updateFlashcard(true, props.arr[props.idx].id, props.setIdx)}>umiem</button>
             </div>
         </div>
     )

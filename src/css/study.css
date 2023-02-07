@@ -19,10 +19,22 @@
     color: var(--bgc);
 }
 
+
+
 .flashcard-div-paragraphs p {
     font-size: 18px;
     flex-basis: 50%;
     text-align: center;
+}
+
+@media only screen and (max-width: 950px) {
+    .flashcard-div-paragraphs {
+        flex-direction: column;
+    }
+
+    .flashcard-div-paragraphs p {
+        flex-basis: 20%;
+    }
 }
 
 .flashcard-div-paragraphs p span {
@@ -46,13 +58,11 @@
 .empty-list {
     display: flex;
     color: var(--bgc);
-    /* text-align: center; */
     justify-content: center;
     align-items: center;
 }
 
 .empty-list h3 {
-    /* line-height: 100px; */
     text-align: center;
     width: 80%;
     line-height: 40px;
